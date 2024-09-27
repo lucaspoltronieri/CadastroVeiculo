@@ -4,7 +4,6 @@
  */
 package com.utfpr.teste;
 
-
 /**
  *
  * @author Lucas
@@ -38,14 +37,22 @@ public class CadastroVeiculo {
                     cadastrarVeiculoPasseio();
                 case 2 ->
                     cadastrarVeiculoCarga();
-                case 3 ->
-                    imprimirTodosVeiculosPasseio();
-                case 4 ->
-                    imprimirTodosVeiculosCarga();
-                case 5 ->
-                    imprimirVeiculoPasseioPlaca();
-                case 6 ->
-                    imprimirVeiculoCargaPlaca();
+                case 3 -> {
+                    dbveiculos.imprimirTodosVeiculosPasseio();
+                    l.entDados("Enter para continuar:");
+                }
+                case 4 -> {
+                    dbveiculos.imprimirTodosVeiculosCarga();
+                    l.entDados("Enter para continuar:");
+                }
+                case 5 -> {
+                    String placa = l.entDados("Entre com a placa:");
+                    dbveiculos.imprimirVeiculoPasseioPlaca(placa);
+                }
+                case 6 -> {
+                    String placa = l.entDados("Entre com a placa:");
+                    dbveiculos.imprimirVeiculoCargaPlaca(placa);
+                }
                 case 7 -> {
                     String placa = l.entDados("Entre com a placa:");
                     dbveiculos.excluirVeiculoPasseioPlaca(placa);
@@ -96,61 +103,6 @@ public class CadastroVeiculo {
             String opcao = l.entDados("Deseja cadastrar outro veículo S/N");
             if (opcao.equalsIgnoreCase("n")) {
                 continuar = false;
-            }
-        }
-    }
-
-    public static void imprimirTodosVeiculosPasseio() {
-        for (Passeio p : dbveiculos.getDBPasseio()) {
-            if (p != null) {
-                System.out.println(p.getPlaca());
-
-            } else {
-                System.out.println("Nâo existe veiculo cadastrado");
-                l.entDados("Press Enter para retornar ao menu");
-                return;
-            }
-        }
-
-    }
-
-    public static void imprimirTodosVeiculosCarga() {
-        for (Carga c : dbveiculos.getDBCarga()) {
-            if (c != null) {
-                System.out.println(c.getPlaca());
-            } else {
-                System.out.println("Não existe veiculo cadastrado");
-                l.entDados("Press Enter para retornar ao menu");
-                return;
-            }
-        }
-
-    }
-
-    public static void imprimirVeiculoPasseioPlaca() {
-        boolean placaEncontrada = false;
-        String placa = l.entDados("Informe a placa:");
-        for (Passeio p : dbveiculos.getDBPasseio()) {
-            if (p.getPlaca().equalsIgnoreCase(placa)) {
-                System.out.println(p.getPlaca());
-                System.out.println("FIM");
-                placaEncontrada = true;
-                break;
-            }
-        }
-        if(!placaEncontrada){
-            System.out.println("Veículo não existe");
-        }
-    }
-
-    public static void imprimirVeiculoCargaPlaca() {
-        String placa = l.entDados("Informe a placa:");
-        for (Carga c : dbveiculos.getDBCarga()) {
-            if (c.getPlaca().equalsIgnoreCase(placa)) {
-                System.out.println(c.getPlaca());
-                System.out.println("FIM");
-            } else {
-                System.out.println("Placa não cadastrada");
             }
         }
     }
