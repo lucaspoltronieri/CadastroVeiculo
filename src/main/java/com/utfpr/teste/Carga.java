@@ -8,15 +8,15 @@ package com.utfpr.teste;
  *
  * @author Usuario
  */
-public class Carga extends Veiculo{
-    
+public class Carga extends Veiculo {
+
     private int cargaMax;
     private int tara;
-    
-    public Carga(){
+
+    public Carga() {
         this.cargaMax = 0;
         this.tara = 0;
-    }    
+    }
 
     public int getCargaMax() {
         return cargaMax;
@@ -38,7 +38,7 @@ public class Carga extends Veiculo{
     float calcVel(float VelocMax) {
         return VelocMax * 100000;
     }
-    
+
     @Override
     public String toString() {
         return "Veículo de carga :\n"
@@ -50,8 +50,8 @@ public class Carga extends Veiculo{
                 + "Cor...................:" + getCor() + "\n"
                 + "Velocidade máxima.....:" + getVelocMax() + "\n"
                 + "Quantidade rodas......:" + getQtdRodas() + "\n"
-                + "Carga Máxima..........:" + getCargaMax()+ "\n"
+                + "Carga Máxima..........:" + getCargaMax() + "\n"
                 + "Tara..................:" + getTara();
     }
-    
+
 }

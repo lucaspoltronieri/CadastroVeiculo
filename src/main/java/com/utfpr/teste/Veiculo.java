@@ -9,7 +9,7 @@ package com.utfpr.teste;
  * @author Usuario
  */
 abstract class Veiculo {
-    
+
     private String placa;
     private String marca;
     private String modelo;
@@ -83,7 +83,7 @@ abstract class Veiculo {
     public void setMotor(Motor motor) {
         this.motor = motor;
     }
-    
+
     abstract float calcVel(float VelocMax);
-    
+
 }
