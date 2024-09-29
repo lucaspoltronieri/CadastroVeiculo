@@ -8,19 +8,19 @@ package com.utfpr.teste;
  *
  * @author Usuario
  */
-public class Passeio extends Veiculo{
-    
+public class Passeio extends Veiculo {
+
     private int qtdPassageiros;
-    
-    public Passeio(){
-        
+
+    public Passeio() {
+
         this.qtdPassageiros = 0;
     }
 
     public int getQtdPassageiros() {
         return qtdPassageiros;
     }
-    
+
     public void setQtdPassageiros(int qtdPassageiros) {
         this.qtdPassageiros = qtdPassageiros;
     }
@@ -29,6 +29,19 @@ public class Passeio extends Veiculo{
     float calcVel(float VelocMax) {
         return VelocMax * 1000;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Veículo de passeio :\n"
+                + "Placa.................:" + getPlaca() + "\n"
+                + "Marca.................:" + getMarca() + "\n"
+                + "Modelo................:" + getModelo() + "\n"
+                + "Potencia..............:" + getMotor().getPotencia() + "\n"
+                + "Pistão................:" + getMotor().getQtdPist() + "\n"
+                + "Cor...................:" + getCor() + "\n"
+                + "Velocidade máxima.....:" + getVelocMax() + "\n"
+                + "Quantidade rodas......:" + getQtdRodas() + "\n"
+                + "Quantidade passageiros:" + getQtdPassageiros() + "\n";
+    }
+
 }

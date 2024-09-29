@@ -39,4 +39,19 @@ public class Carga extends Veiculo{
         return VelocMax * 100000;
     }
     
+    @Override
+    public String toString() {
+        return "Veículo de carga :\n"
+                + "Placa.................:" + getPlaca() + "\n"
+                + "Marca.................:" + getMarca() + "\n"
+                + "Modelo................:" + getModelo() + "\n"
+                + "Potencia..............:" + getMotor().getPotencia() + "\n"
+                + "Pistão................:" + getMotor().getQtdPist() + "\n"
+                + "Cor...................:" + getCor() + "\n"
+                + "Velocidade máxima.....:" + getVelocMax() + "\n"
+                + "Quantidade rodas......:" + getQtdRodas() + "\n"
+                + "Carga Máxima..........:" + getCargaMax()+ "\n"
+                + "Tara..................:" + getTara();
+    }
+    
 }

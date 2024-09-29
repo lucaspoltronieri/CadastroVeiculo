@@ -78,7 +78,7 @@ public class DBVeiculos {
             return;
         }
         for (Passeio p : getDBPasseio()) {
-            System.out.println(p.getPlaca());
+            System.out.println(p);
         }
 
     }
@@ -89,7 +89,7 @@ public class DBVeiculos {
             return;
         }
         for (Carga c : getDBCarga()) {
-            System.out.println(c.getPlaca());
+            System.out.println(c);
         }
 
     }
@@ -98,7 +98,7 @@ public class DBVeiculos {
         boolean veiculoEncontrado = false;
         for (Passeio p : getDBPasseio()) {
             if (p.getPlaca().equalsIgnoreCase(placa)) {
-                System.out.println(p.getPlaca());
+                System.out.println(p);
                 veiculoEncontrado = true;
                 break;
 
@@ -115,7 +115,7 @@ public class DBVeiculos {
         boolean veiculoEncontrado = false;
         for (Carga c : getDBCarga()) {
             if (c.getPlaca().equalsIgnoreCase(placa)) {
-                System.out.println(c.getPlaca());
+                System.out.println(c);
                 veiculoEncontrado = true;
                 break;
 
@@ -132,6 +132,7 @@ public class DBVeiculos {
         for (Passeio p : getDBPasseio()) {
             if (p.getPlaca().equalsIgnoreCase(placa)) {
                 DBPasseio.remove(p);
+                System.out.println("Veículo excluído com sucesso");
                 veiculoEncontrado = true;
                 break;
             }
@@ -145,8 +146,9 @@ public class DBVeiculos {
         for (int i = 0; i < DBCarga.size(); i++) {
             if (DBCarga.get(i).getPlaca().equalsIgnoreCase(placa)) {
                 DBCarga.remove(i);
+                System.out.println("Veículo excluído com sucesso");
             } else {
-                System.out.println("Veículo não existe!");
+                System.out.println("Não existe veiculo com essa placa");
             }
         }
     }
