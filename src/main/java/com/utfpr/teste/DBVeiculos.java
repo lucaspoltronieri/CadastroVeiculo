@@ -39,59 +39,33 @@ public class DBVeiculos {
     }
 
     public void setDBPasseio(Passeio passeio) throws VeicExistException {
-        if (!existePlacaPasseio(passeio)) {
-            DBPasseio.add(passeio);
-        } else {
+        if (getDBPasseio().stream().anyMatch(p -> p.getPlaca().equals(passeio.getPlaca()))) {
             throw new VeicExistException();
         }
+        DBPasseio.add(passeio);
     }
 
     public void setDBCarga(Carga carga) throws VeicExistException {
-        if (!existePlacaCarga(carga)) {
-            DBCarga.add(carga);
-        } else {
+        if (getDBCarga().stream().anyMatch(c -> c.getPlaca().equals(carga.getPlaca()))) {
             throw new VeicExistException();
         }
-    }
-
-    public boolean existePlacaPasseio(Passeio passeio) {
-        for (Passeio p : DBPasseio) {
-            if (p.getPlaca().equals(passeio.getPlaca())) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean existePlacaCarga(Carga carga) {
-        for (Carga c : DBCarga) {
-            if (c.getPlaca().equals(carga.getPlaca())) {
-                return true;
-            }
-        }
-        return false;
+        DBCarga.add(carga);
     }
 
     public void imprimirTodosVeiculosPasseio() {
         if (getDBPasseio().isEmpty()) {
             System.out.println("Não existe veículo cadastrado para exibir");
-            return;
+        } else {
+            getDBPasseio().forEach(System.out::println);
         }
-        for (Passeio p : getDBPasseio()) {
-            System.out.println(p);
-        }
-
     }
 
     public void imprimirTodosVeiculosCarga() {
         if (getDBCarga().isEmpty()) {
             System.out.println("Não existe veículo cadastrado para exibir");
-            return;
+        } else {
+            getDBCarga().forEach(System.out::println);
         }
-        for (Carga c : getDBCarga()) {
-            System.out.println(c);
-        }
-
     }
 
     public void imprimirVeiculoPasseioPlaca(String placa) {
@@ -117,28 +91,20 @@ public class DBVeiculos {
     }
 
     public void excluirVeiculoPasseioPlaca(String placa) {
-        boolean veiculoEncontrado = false;
-        for (Passeio p : getDBPasseio()) {
-            if (p.getPlaca().equalsIgnoreCase(placa)) {
-                DBPasseio.remove(p);
-                System.out.println("Veículo excluído com sucesso");
-                veiculoEncontrado = true;
-                break;
-            }
-        }
-        if (!veiculoEncontrado) {
-            System.out.println("Não existe veiculo com essa placa");
+        boolean removerVeiculo = DBPasseio.removeIf(p -> p.getPlaca().equalsIgnoreCase(placa));
+        if (removerVeiculo) {
+            System.out.println("Veículo excluído com sucesso");
+        } else {
+            System.out.println("Não existe veículo com essa placa");
         }
     }
 
     public void excluirVeiculoCargaPlaca(String placa) {
-        for (int i = 0; i < DBCarga.size(); i++) {
-            if (DBCarga.get(i).getPlaca().equalsIgnoreCase(placa)) {
-                DBCarga.remove(i);
-                System.out.println("Veículo excluído com sucesso");
-            } else {
-                System.out.println("Não existe veiculo com essa placa");
-            }
+        boolean removerVeiculo = DBCarga.removeIf(p -> p.getPlaca().equalsIgnoreCase(placa));
+        if (removerVeiculo) {
+            System.out.println("Veículo excluído com sucesso");
+        } else {
+            System.out.println("Não existe veículo com essa placa");
         }
     }
 
