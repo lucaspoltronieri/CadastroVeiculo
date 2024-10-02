@@ -95,6 +95,7 @@ public class CadastroVeiculo {
                 dbveiculos.setDBPasseio(passeio);
                 System.out.println("Veículo incluído com sucesso");
             } catch (VeicExistException ex) {
+                System.out.println(ex);
             }
             
             String opcao = l.entDados("Deseja Cadastrar outro veículo S/N");

@@ -73,7 +73,7 @@ public class DBVeiculos {
                 .filter(p -> p.getPlaca().equalsIgnoreCase(placa))
                 .findFirst()
                 .ifPresentOrElse(
-                        p -> System.out.println(p),
+                        System.out::println,
                         () -> System.out.println("Não existe veiculo com essa placa")
                 );
 
@@ -84,15 +84,14 @@ public class DBVeiculos {
                 .filter(c -> c.getPlaca().equalsIgnoreCase(placa))
                 .findFirst()
                 .ifPresentOrElse(
-                        c -> System.out.println("p"),
+                        System.out::println,
                         () -> System.out.println("Não existe veículo com essa placa")
                 );
 
     }
 
     public void excluirVeiculoPasseioPlaca(String placa) {
-        boolean removerVeiculo = DBPasseio.removeIf(p -> p.getPlaca().equalsIgnoreCase(placa));
-        if (removerVeiculo) {
+        if (DBPasseio.removeIf(p -> p.getPlaca().equalsIgnoreCase(placa))) {
             System.out.println("Veículo excluído com sucesso");
         } else {
             System.out.println("Não existe veículo com essa placa");
@@ -100,8 +99,7 @@ public class DBVeiculos {
     }
 
     public void excluirVeiculoCargaPlaca(String placa) {
-        boolean removerVeiculo = DBCarga.removeIf(p -> p.getPlaca().equalsIgnoreCase(placa));
-        if (removerVeiculo) {
+        if (DBCarga.removeIf(p -> p.getPlaca().equalsIgnoreCase(placa))) {
             System.out.println("Veículo excluído com sucesso");
         } else {
             System.out.println("Não existe veículo com essa placa");
